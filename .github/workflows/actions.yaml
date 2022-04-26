@@ -5,9 +5,15 @@ jobs :
     runs-on: ubuntu-latest
     
     steps:
-      - name : List files
+      - name : List files before
         run : |
-              ls
+              ls -a
+              pwd    
+      - name : Checkout Actions
+        uses : actions/checkout@v1
+      - name : List files after
+        run : |
+              ls -a
               pwd
 
       - name : Simple JS Action
