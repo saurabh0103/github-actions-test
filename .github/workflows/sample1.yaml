@@ -1,13 +1,13 @@
 name: Shell Commands
 on : [push]
 jobs:
-    run-shell-commands:
-        steps:
-            - name : echo a string
-              run : echo "Hello World"
-            - name : multiline script
-              run : |
-                    npm -v
-                    node -v
+  run-shell-commands:
+      steps:
+          - name : echo a string
+            run : echo "Hello World"
+          - name : multiline script
+            run : |
+                npm -v
+                node -v
         
              
