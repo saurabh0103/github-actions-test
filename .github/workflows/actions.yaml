@@ -7,8 +7,9 @@ jobs :
       -name : Simple JS Actions
       id : greet
       uses : actions/hello-world-javascript-action@v1.1
+
       with :
         who-to-greet : Saurabh
-      -name : Log Greeting time
+      #-name : Log Greeting time
       run : echo "${{steps.greet.outputs.time}}"
 
