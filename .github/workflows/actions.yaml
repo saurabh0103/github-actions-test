@@ -5,6 +5,11 @@ jobs :
     runs-on: ubuntu-latest
     
     steps:
+      - name : List files
+        run : |
+              ls
+              pwd
+
       - name : Simple JS Action
         
         id : greet
