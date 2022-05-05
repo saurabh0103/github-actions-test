@@ -1,8 +1,18 @@
 name: Workflow Actions
 on : 
-  push :
-  pull_request : 
-    [closed,assigned,opened,reopened]
+    push:
+      branches:
+        - master
+        - 'feature/*'
+        
+         
+  #reporisitory_dispatch
+  #push :
+  #schedule:
+  #  - cron: "5 * * * *" 
+     
+  #pull_request : 
+  #  types: [closed,assigned,opened,reopened]
 jobs :
   run-github-actions :
     runs-on: ubuntu-latest
