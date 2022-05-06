@@ -14,13 +14,11 @@ jobs:
     - name: Checkout Repo
       uses: actions/checkout@v1
 
-    - name: Terraform Init
-      uses: hashicorp/terraform-github-actions/init@v0.4.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        TF_ACTION_WORKING_DIR: 'terraform'
-        AWS_ACCESS_KEY_ID:  ${{ secrets.ACCESS_KEY }}
-        AWS_SECRET_ACCESS_KEY:  ${{ secrets.SECRET_KEY }}
+    - name : Setup Terraform
+      uses : hashicorp/setup-terraform@v1
+
+    - name : Terraform init
+      run : terraform init
 
 
     - name: Terraform Apply
