@@ -1,0 +1,47 @@
+name: Terrform Plan jobs
+
+
+on :
+  push :
+    -branch : develop
+
+jobs :
+  terraform :
+
+    name : "Terraform"
+
+
+    runs-on : Ubuntu-latest
+
+
+    env :
+      AWS_ACCESS_KEY : ${{secrets.ACCESS_KEY}}
+      AWS_SECRET_KEY : ${{secrets.SECRET_KEY}}
+      AWS_REGION : 'ap-south-1'
+    steps :
+
+      - name : Checkout
+        uses : actions/checkout@v2
+
+      - name : Setup Terraform
+        uses : hashicorp/setup-terraform@v1
+
+      - name : Terraform init
+        id : init
+        run : terraform init
+
+      - name : Terraform Plan
+        id : Plan
+        if : github.event.name == 'push'
+        run : terraform plan -no-color
+        continue-on-error : true
+        
+      - name : Terraform plan status
+        if : steps.plan.outcome == 'failure'
+        run : exit 1
+
+      - name : Terraform Apply
+        if : github.ref == 'refs/heads/main'  && github.event.name == 'push'
+        run : Terraform apply - auto-approve
+
+

@@ -34,7 +34,7 @@ jobs:
     - name: Sync S3
       uses: jakejarvis/s3-sync-action@master
       env:
-        SOURCE_DIR: './src'
+        SOURCE_DIR: 'C:\Users\saurabh.pandey\Desktop\stockx\github actions\objects'
         AWS_REGION: 'ap-south-1'
         AWS_S3_BUCKET: 'terraformbucket00101'
         AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
