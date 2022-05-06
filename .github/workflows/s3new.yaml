@@ -35,7 +35,7 @@ jobs:
       uses: jakejarvis/s3-sync-action@master
       env:
         SOURCE_DIR: './src'
-        AWS_REGION: 'eu-central-1'
+        AWS_REGION: 'ap-south-1'
         AWS_S3_BUCKET: 'terraformbucket00101'
         AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
