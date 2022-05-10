@@ -3,13 +3,14 @@ name: Terrform Plan jobs
 
 on :
   push :
-    -branch : dev
+    branches : 
+     - dev
 
 jobs :
   terraform :
 
     name : "Terraform"
-    runs-on : Ubuntu-latest
+    runs-on : ubuntu-latest
 
 
     env :
