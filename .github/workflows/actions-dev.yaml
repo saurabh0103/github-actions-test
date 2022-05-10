@@ -1,0 +1,40 @@
+name: Terrform Plan jobs
+
+
+on :
+  push :
+    -branch : dev
+
+jobs :
+  terraform :
+
+    name : "Terraform"
+    runs-on : Ubuntu-latest
+
+
+    env :
+      AWS_ACCESS_KEY : ${{secrets.ACCESS_KEY}}
+      AWS_SECRET_KEY : ${{secrets.SECRET_KEY}}
+      AWS_REGION : 'ap-south-1'
+    steps :
+
+      - name : Checkout
+        uses : actions/checkout@v2
+
+      - name : Setup Terraform
+        uses : hashicorp/setup-terraform@v1
+        with : 
+          cli_config_credentials_token : ${{secrets.TERRAFORMAPITOKEN}
+
+      - name : Terraform init
+        id : init
+        run : terraform init
+
+      - name : Terraform Plan
+        id : Plan
+        if : github.event.name == 'push'
+        run : terraform plan -no-color
+      
+
+
+

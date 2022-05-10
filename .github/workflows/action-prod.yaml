@@ -3,7 +3,7 @@ name: Terrform Plan jobs
 
 on :
   push :
-    -branch : develop
+    - branch : feature
 
 jobs :
   terraform :
@@ -18,6 +18,7 @@ jobs :
       AWS_ACCESS_KEY : ${{secrets.ACCESS_KEY}}
       AWS_SECRET_KEY : ${{secrets.SECRET_KEY}}
       AWS_REGION : 'ap-south-1'
+      
     steps :
 
       - name : Checkout
@@ -25,6 +26,8 @@ jobs :
 
       - name : Setup Terraform
         uses : hashicorp/setup-terraform@v1
+        with : 
+          cli_config_credentials_token : ${{secrets.TERRAFORMAPITOKEN}}
 
       - name : Terraform init
         id : init
