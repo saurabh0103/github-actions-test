@@ -21,7 +21,7 @@ terraform {
     organization = "saurabhs_private"
 
     workspaces {
-      name = "github-actions-test"
+      name = "Terrafrom-Actions-test"
     }
   }
 }
