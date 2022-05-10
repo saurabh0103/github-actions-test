@@ -1,4 +1,4 @@
-name: Terrform Plan jobs
+name: Terrform apply jobs
 
 
 on :
@@ -36,7 +36,7 @@ jobs :
 
       - name : Terraform Plan
         id : Plan
-        if : github.event.name == 'push'
+        if : github.event_name == 'push'
         run : terraform plan -no-color
         continue-on-error : true
         
@@ -45,7 +45,7 @@ jobs :
         run : exit 1
 
       - name : Terraform Apply
-        if : github.ref == 'refs/heads/main'  && github.event.name == 'push'
+        if : github.ref == 'refs/heads/main'  && github.event_name == 'push'
         run : Terraform apply - auto-approve
 
 
