@@ -24,7 +24,7 @@ jobs :
       - name : Setup Terraform
         uses : hashicorp/setup-terraform@v1
         with : 
-          cli_config_credentials_token : ${{secrets.TERRAFORMAPITOKEN}
+          cli_config_credentials_token : ${{secrets.TERRAFORMAPITOKEN}}
 
       - name : Terraform init
         id : init
